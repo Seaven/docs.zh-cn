@@ -281,7 +281,7 @@ select * from es_table where esquery(k4, ' {
 
 您需要提前在 StarRocks 中创建 JDBC 资源，用于管理数据库的相关连接信息。这里的数据库是指支持 JDBC 的数据库，以下简称为“目标数据库”。创建资源后，即可使用该资源创建外部表。
 
-执行如下语句，创建一个名为 `jdbc0` 的 JDBC 资源：
+执行如下语句，创建一个名为 `jdbc0` 的 JDBC 资源，用于访问PostgreSQL：
 
 ~~~SQL
 create external resource jdbc0
@@ -308,6 +308,8 @@ properties (
 > 说明：目标数据库 URI 中必须指定具体数据库的名称，如上示例中的 `jdbc_test`。
 
 * `driver_url`：用于下载 JDBC 驱动程序 JAR 包的 URL，支持使用 HTTP 协议 或者 file 协议。例如`https://repo1.maven.org/maven2/org/postgresql/postgresql/42.3.3/postgresql-42.3.3.jar`，`file:///home/disk1/postgresql-42.3.3.jar`。
+
+> 说明：不同目标数据库使用的 JDBC 驱动程序不同，使用其他数据库的 JDBC 驱动程序会有不兼容的问题，建议访问目标数据库官网，查询并使用其支持的 JDBC 驱动程序。
 
 * `driver_class`：JDBC 驱动程序的类名称。以下列举常见 JDBC 驱动程序的类名称：
 
