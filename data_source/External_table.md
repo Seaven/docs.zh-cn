@@ -320,7 +320,7 @@ properties (
 
 创建资源时，FE 通过 `driver_url` 下载 JDBC 驱动程序 JAR 包，生成 checksum 并保存起来，用于校验 BE 下载的 JDBC 驱动程序 JAR 包的正确性。
 
-    > 说明：如果下载 JDBC 驱动程序失败，则创建资源也会失败。
+> 说明：如果下载 JDBC 驱动程序失败，则创建资源也会失败。
 
 BE 节点首次查询 JDBC 外部表时，如果发现所在机器上不存在相应的 JDBC 驱动程序 JAR 包，则会通过 `driver_url` 进行下载，所有的 JDBC 驱动程序 JAR 包都会保存在 **${STARROCKS_HOME}/lib/jdbc_drivers** 目录下。
 
