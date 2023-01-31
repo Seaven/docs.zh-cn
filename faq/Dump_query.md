@@ -1,25 +1,25 @@
 # QueryDump 接口文档
 
-本页介绍如何使用 StarRocks 的 QueryDump 功能。
+本文介绍如何使用 StarRocks 的 QueryDump 功能。
 
-当使用starrocks执行查询SQL时，遇到以下问题时，可以通过 StarRocks 的QueryDump功能将SQL以及相关的信息发送给 StarRocks，StarRocks 会第一时间协助排查问题。
+使用 StarRocks 执行查询 SQL 时，如果遇到以下问题，可以通过 StarRocks 的 QueryDump 功能将 SQL 以及相关的信息发送给 StarRocks 技术支持人员。StarRocks 会第一时间协助排查问题。
 
-* 执行SQL，或者Explain SQL 返回 `Unknow Error`
-* 执行SQL，遇到非正常返回的报错信息或异常
-* 执行SQL效率不符合预期，或者发现执行计划有优化点（例如，可以裁剪分区，Join顺序调整）
+* 执行 SQL 或者 Explain SQL 时返回 `Unknown Error`。
+* 执行 SQL 时遇到非正常返回的报错信息或异常。
+* 执行 SQL 时效率不符合预期，或者发现执行计划有优化点（例如，可以裁剪分区或进行 Join 顺序调整）。
 
 ## 功能
 
-QueryDump功能会根据查询的SQL，返回FE执行SQL时依赖的信息，包括：
+QueryDump 功能会根据查询的SQL，返回 FE 执行 SQL 时依赖的信息，包括：
 
-1. 查询语句
-2. 查询中引用的表结构
-3. Session 变量
-4. BE个数
-5. 统计信息（Min，Max值）
-6. 异常信息（异常堆栈）
+* 查询语句
+* 查询中引用的表结构
+* Session 变量
+* BE 个数
+* 统计信息（Min，Max值）
+* 异常信息（异常堆栈）
 
-## Http接口
+## HTTP 接口
 
 Http Post
 
@@ -33,9 +33,9 @@ wget --user=${username} --password=${password} --post-file ${query_file} http://
 
 参数说明：
 
-* query_file：包含query的文件
-* dump_file：输出文件
-* db：SQL执行的数据库，如果用户在query中包含了`use db`，db参数为可选，否则需要指定
+* query_file：包含 query 的文件。
+* dump_file：输出文件。
+* db：SQL 语句执行的数据库。如果用户在 query 中包含了 `use db` 语句，则 `db` 参数为可选，否则需要指定。
 
 请求样例:
 
@@ -45,7 +45,7 @@ wget --user=root --password=123 --post-file query_file http://127.0.0.1:8130/api
 
 ## 返回格式
 
-返回格式为json，样例：
+返回格式为 JSON，样例：
 
 ```json
 {
